@@ -45,12 +45,12 @@ def solution_coins2(coins):
     total = 0
     for i in range(len(coins)):
         if coins[i] % 2 == 0:
-            total = coins[i]//2
+            total = total + coins[i]//2
         else:
-            total = coins[i]//2+1
+            total = total + coins[i]//2+1
     return total
 
-a = solution_coins(coins)
+a = solution_coins2(coins)
 print(a)
 
 
