@@ -36,6 +36,44 @@ def longest_common_prefix(strs):
 
 
     # str = strs[1:]  去掉字符串第一个元素
+def logest_common_prefix2(strs):
+
+    if not strs: return ""
+    str0 = min(strs)
+    str1 = max(strs)
+    for i in range(len(str0)):
+        if str0[i] != str1[i]:
+            return str0[:i]
+    return str0
+
+def logest_common_prefix3(strs):
+    if not strs: return ''
+    index = 0
+    lm = 2 ** 31 - 1
+    for i in range(len(strs)):
+        length = len(strs[i])
+        if length < lm:
+            index = i
+            lm = length
+
+    res = ''
+    l = 0
+    for j in strs[index]:
+        flag = False
+        for k in range(len(strs)):
+            if k != index:
+                if j != strs[k][l]:
+                    flag = True
+                    break
+        else:
+            res += strs[k][l]
+        l += 1
+        if flag:
+            break
+
+    return res
+
+
 
 
 
