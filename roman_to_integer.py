@@ -19,27 +19,48 @@ M             1000
     C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 
 给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。
-
-来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/roman-to-integer
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+思路：
+    首先取字符串第一个值，赋值给A，
+    然后将第一个值移除，判断A 与剩余字符串的第一个值B大小
+    如果A比B小，相减，并移除B
+    否则将A对应的值赋值给result
+    注意 字符串长度，当等于0时，break
+    付过字符串长度等于1， 那么直接输出
 
 '''
 
 
 def romanToInt(s):
     r_dict = {'I': 1, 'V': 5, 'X': 10, 'L':50,'C':100, 'D':500, 'M':1000}
-    a = 0
-    b = 0
-    for i in len(s)-2:
-
-        if r_dict.get(s[i])<r_dict.get(s[i+1]):
-            b = r_dict.get(i+1)-r_dict.get(i)
+    roman = list(s)  # 转列表
+    result = 0
+    for i in range(len(roman)):
+        if len(roman) == 0:     # 长度等于0，停止
+            break
+        if len(roman)==1:       # 长度等于1， 直接输出结果
+            result = result + r_dict.get(roman[0])
+            roman.pop(0)
         else:
-            b = r
-        b = a+b
-    print(b)
+            roman_value = roman[0]
+            roman.pop(0)
+            if r_dict.get(roman_value) < r_dict.get(roman[0]):   # 判断字符串是否小于它右边的值
+                result = result + r_dict.get(roman[0]) - r_dict.get(roman_value)
+                roman.pop(0)
+            else:
+                 result = result+r_dict.get(roman_value)
+
+
+    return result
+
+
+
 
 
 if __name__ == "__main__":
-    romanToInt('IV')
+    s1 = 'II'
+    s2 = "IV"
+    s3 = "LVIII"
+    s4 = "MCMXCIV"
+    s5 = "MCMXCVI"
+    print(romanToInt(s5))
