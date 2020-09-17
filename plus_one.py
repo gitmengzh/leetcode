@@ -13,25 +13,27 @@
 
 链接：https://leetcode-cn.com/problems/plus-one
 '''
-#  思
+#  思路：从倒数第一位开始判断是否为9，如果为9，则在新的列表重第一位为0，并在旧的列表中移除掉它，否则直接旧列表最后一位➕1，
 def plus_one(digits):
-    new_digits = digits[::-1]
+
     stack = [0]
     if digits[0] == 0:
         return [1]
-
-    for i in range(len(digits)):
+    if digits[-1] !=9: # 判断不为9，则直接加
+        digits[-1]= digits[-1]+1
+        return digits
+    for i in range(len(digits)): # 判断最后一位是否为9
         if digits[-1] ==9:
             digits.pop()
             stack[-1] = 0
             stack.append(1)
-        else:
+        else: #如果不为9，则直接加
             stack[-1] = digits[-1]+stack[-1]
             digits.pop()
-            stack = stack+digits
+            stack = stack+digits[::-1]
             break
-    return stack
 
+    return stack[::-1]
 
 
 
@@ -44,4 +46,6 @@ if __name__ == "__main__":
     dig2 = [1,0,9]
     dig3 = [1,2,3]
     dig4 = [1,0,9,9]
+    dig5 = [2,4,9,3,9]
+
     print(plus_one(dig3))
