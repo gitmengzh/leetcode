@@ -32,21 +32,24 @@ M             1000
 '''
 
 def integer_to_number(nums):
-    r_dict = {'1':'I', '5':'V', '10':'X', '50':'L', '100':'C', '500':'D', '1000':'M', '4':'IV', '9':'IX'}
-    roman = ''
+    r_dict = {'1':'I', '5':'V', '10':'X', '50':'L', '100':'C', '500':'D', '1000':'M'}
+    roman = [None]
     str_nums = str(nums)
-    for i in range(len(str_nums)):
-        for j in str_nums:
-            if j*i*10 in r_dict.keys():
-                roman[0] = r_dict.get(j*i*10)
-            elif j ==4:
-                roman[0] = r_dict.get(1*i*10)+r_dict.get('5'*i*10)
-            elif j==9:
-                roman[0] = r_dict.get(1*i*10)+r_dict.get('5'*i*10)
-            elif j in [1,2,3]:
-                pass
-            else:
-                pass
+    i = 0
+    # for i in range(len(str_nums)):
+    for j in str_nums:
+        if str(int(j)*(10**i)) in r_dict.keys():
+            roman[0] = r_dict.get(str(int(j)*10**i))
+        elif j =='4':
+            roman[0] = r_dict.get(str(1*10**i))+r_dict.get(str(5*10**i))
+        elif j=='9':
+            roman[0] = r_dict.get(str(1*10**i))+r_dict.get(str(10**(i+1)))
+        elif j in ['1','2','3']:
+            roman[0] = (r_dict.get(str(10**i)))*j
+        else:
+            roman[0] = r_dict.get(str(5*10**i))+(r_dict.get(str(10**i)))*(int(j)-5)
+        i=i+1
+        roman.insert(0,None)
 
 
 
@@ -64,4 +67,7 @@ if __name__ == "__main__":
     num3 = 9
     num4 = 58
     num5 = 1994
-    print(integer_to_number('5'))
+    print(integer_to_number(num5))
+   #  a = [1]
+   #  a.insert(0,1)
+   #  print(a)
