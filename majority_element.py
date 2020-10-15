@@ -23,7 +23,9 @@ def majorityElement(nums):
         if new_dict.get(s)>len(nums)/2:
             res.append(s)
     return res
-
+def majorityElement2(nums):
+    nums.sort()
+    return nums[len(nums)//2]
 
 
 
@@ -31,4 +33,4 @@ def majorityElement(nums):
 
 if __name__ == "__main__":
     nums = [1,2,3,3,4,5,5,5,5,5,5]
-    majorityElement(nums)
+    print(majorityElement2(nums))
