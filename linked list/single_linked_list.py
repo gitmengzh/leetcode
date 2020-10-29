@@ -92,20 +92,40 @@ class Singlelinklist(object):
                 pre = cur
                 cur = cur.next
 
+    def merge_two_sorted_lists(self, l1,l2):
+
+        if not (l1 and l2):
+            return l1 or l2
+        if l1.elem <= l2.elem:  # 递归调用
+            l1.next = self.merge_two_sorted_lists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.merge_two_sorted_lists(l1, l2.next)
+            return l2
+
 
 
 if __name__ == "__main__":
-    node  = Singlelinklist()
-    node.append(1)
+    l1 = Singlelinklist()
+    l2 = Singlelinklist()
+    #node.append(1)
     # print(node.travel(), end="")
-    node.add(3)
+    #node.add(3)
     # print(node.travel())
 
-    node.insert(1,2)
+    #node.insert(1,2)
     # print(node.travel())
 
     # print(node.length())
 
     # print(node.search(3))
-    node.remove(1)
-    print(node.travel())
+    #node.remove(1)
+    #print(node.travel())
+    l1.add(1)
+    l2.add(1)
+    l1.add(2)
+    l2.add(3)
+    l1.add(4)
+    l2.add(5)
+
+    print(merge_two_sorted_lists(l1,l2))
