@@ -128,4 +128,4 @@ if __name__ == "__main__":
     l1.add(4)
     l2.add(5)
 
-    print(merge_two_sorted_lists(l1,l2))
+    print()
