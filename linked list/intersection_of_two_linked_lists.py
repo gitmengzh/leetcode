@@ -20,7 +20,24 @@
     可假定整个链表结构中没有循环。
     程序尽量满足 O(n) 时间复杂度，且仅用 O(1) 内存。
 链接：https://leetcode-cn.com/problems/intersection-of-two-linked-lists
+
+解题思路: 循环两个链表，linkA+linkB 和 linkB+linkA
+这样，链表长度就一样，如果有相交，那么就会相等，如果不相交，那么最终都为null,循环结束
 '''
 
 def getIntersectionNode(headA, headB):
-    pass
+    a = headA
+    b = headB
+    while a != b:
+        a = a.next if a else headB
+        b = b.next if b else headA
+    return a
+
+
+
+'''
+python知识点， 三目运算
+a = b if a else c
+如果if 条件成立， a=b
+否则 a=c
+'''
