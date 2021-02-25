@@ -21,7 +21,7 @@ def house_robber(nums):
     result1 = 0
     result2 = 0
     for i in range(len(nums)):
-        result1 = result1 +nums[i]
+        result1 = result1 +nums[i] 
         if 2*i < len(nums):
             result2 = result2 +nums[2*i]
     if result1 - result2 > result2:

@@ -9,6 +9,8 @@
 链接：https://leetcode-cn.com/problems/length-of-last-word
 '''
 
+# strip :
+
 def length_of_last_word(s):
     list_s = s.split( )   # 以空格进行分解成一个列表，   split strip方法的使用
     if not list_s:
