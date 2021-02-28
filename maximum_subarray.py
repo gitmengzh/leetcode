@@ -14,8 +14,31 @@ def maxSubArray(nums):
         nums[i] = max(nums[i-1]+nums[i], nums[i])
     return max(nums)
 
+<<<<<<< Updated upstream
 if __name__ == "__main__":
     nums = [-2,1,-3,4,-1,2,1,-5,4]
     print(maxSubArray(nums))
+=======
+def maxSubArray2(nums):
+    if len(nums) == 1:
+        return nums[0]
+    a = nums[0]
+    b = a
+    n = len(nums)
+    for i in range(1,n):
+        if a + nums[i]>nums[i]:
+            b = max(b, a+nums[i])
+            a = a+nums[i]
+        else:
+            b = max(a, b, nums[i], a+nums[i] )
+            a = nums[i]
+    return b
+
+
+
+if __name__ == "__main__":
+    nums = [-2,1,-3,4,-1,2,1,-5,4]
+    print(maxSubArray2(nums))
+>>>>>>> Stashed changes
 
 

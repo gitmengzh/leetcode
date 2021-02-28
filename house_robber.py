@@ -29,8 +29,41 @@ def house_robber(nums):
     else:
         return result2
 
+
+import numpy as np
+def house_robber2(nums):
+    # if not nums:
+    #     return 0
+    # opt = np.zeros(len(nums))
+    # opt[0] = nums[0]
+    # opt[1] = max(nums[0], nums[1])
+    # for i in range(2, len(nums)):
+    #     a = opt[i-2] + nums[i]
+    #     b = opt[i-1]
+    #     opt[i] = max(a,b)
+    # return int(opt[len(nums)-1])
+    if not nums:
+        return 0
+    lenth = len(nums)
+    # if lenth == 1:
+    #     return nums[0]
+    # elif lenth == 2:
+    #     return max(nums[0], nums[1])
+    import numpy as np
+    opt = np.zeros(lenth + 1)
+    # opt[0] = nums[0]
+    opt[0] = 0
+    opt[1] = nums[0]
+    for i in range(2, lenth + 1):
+        a = opt[i - 2] + nums[i - 1]
+        b = opt[i - 1]
+        opt[i] = max(a, b)
+    print(opt)
+    return int(opt[lenth])
 if __name__=="__main__":
     nums1 = [2,7,9,3,1]
     nums2 = [8,1,1,9,3,8]
     nums3 = [8,1,1,6,8]
-    print(house_robber(nums1))
+    nums4 = [1]
+    nums5 = [1,2,3,1]
+    print(house_robber2(nums5))
