@@ -8,7 +8,6 @@
 输入: 3
 输出: [1,3,3,1]
 链接：https://leetcode-cn.com/problems/pascals-triangle-ii
->>>>>>> Stashed changes
 '''
 import time
 
