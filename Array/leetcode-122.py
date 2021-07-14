@@ -20,11 +20,10 @@
 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii
 '''
 
-
 # 双指针
+
+
 def solution1(prices):
-    if not prices:
-        return 0
     res = 0
     slow = 0
     fast = 1
@@ -36,7 +35,16 @@ def solution1(prices):
         fast += 1
     return res
 
-# 贪心，dp
+# 贪心
+
+
+def solution2(prices):
+    res = 0
+    for i in range(1, len(prices)):
+        if prices[i]-prices[i-1]>0:
+            res += prices[i]-prices[i-1]
+    return res
+# ，dp
 
 
 if __name__ == "__main__":
