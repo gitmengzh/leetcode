@@ -65,7 +65,21 @@ def addRungs(rungs, dist):
     return res
 
 
+def addRungs2(rungs, dist):
+    """
+    判断
+    :param rungs:
+    :param dist:
+    :return:
+    """
+    start = res = 0  # 当前高度为0
+    for h in rungs:  #
+        res += (h-start-1)//dist   # 如果目标台阶高度与当前高度差大于dist的情况（h）
+        start = h
+    return res
+
+
 if __name__ == "__main__":
-    rungs = [3, 4, 8,9]
-    dist = 1
-    print(addRungs(rungs, dist))
+    rungs = [3,5]
+    dist = 2
+    print(addRungs2(rungs, dist))

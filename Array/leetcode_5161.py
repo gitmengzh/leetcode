@@ -28,7 +28,13 @@
 """
 
 # 5161. 可以输入的最大单词数
-def canBeTypedWords(text, brokenLetters) :
+def canBeTypedWords1(text, brokenLetters) :
+    """
+    for循环和else可以联合起来用，
+    :param text: 
+    :param brokenLetters: 
+    :return: 
+    """
         text_list = text.split(' ')
         res = 0
         for i in text_list:
@@ -38,3 +44,6 @@ def canBeTypedWords(text, brokenLetters) :
             else:
                 res += 1
         return res
+
+def canBeTypedWords2(text, brokenLetters):
+    return len([t for t in text.split(' ') if not any(b in t for b in brokenLetters)])
