@@ -31,9 +31,28 @@ def reverse1(x):
         res = 0
     return res
 
+def reverse2(x):
+    res = 0
+    if abs(x) ==x:
+        while x:
+            res = res * 10 + x % 10
+            x = x // 10
+    else:
+        x = abs(x)
+        while x:
+            res = res * 10 + x % 10
+            x = x // 10
+        res = -res
+    if res > 2**31 - 1 or res < -2**31:
+        res = 0
+
+    return res
+
+
 
 
 if __name__ == "__main__":
     x1 = 123
     x2 = -1234567890
-    print(reverse1(x2))
+    x3 = -1234
+    print(reverse2(x2))
