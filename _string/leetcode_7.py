@@ -24,7 +24,8 @@
 def reverse1(x):
     str_x = str(x)
     if str_x[0] == '-':
-        res = int('-'+str_x[1:][::-1])
+        # res = int('-'+str_x[1:][::-1])
+        res = int('-'+str_x[:0:-1])
     else:
         res = int(str_x[::-1])
     if x < -2 ** 31 or x > 2 ** 31:
@@ -55,4 +56,4 @@ if __name__ == "__main__":
     x1 = 123
     x2 = -1234567890
     x3 = -1234
-    print(reverse2(x2))
+    print(reverse1(x2))

@@ -35,15 +35,28 @@ def canBeTypedWords1(text, brokenLetters) :
     :param brokenLetters: 
     :return: 
     """
-        text_list = text.split(' ')
-        res = 0
-        for i in text_list:
-            for j in i:
-                if j in brokenLetters:
-                    break
-            else:
-                res += 1
+    text_list = text.split(' ')
+    res = 0
+    for i in text_list:
+        for j in i:
+            if j in brokenLetters:
+                break
+        else:                   # for.... else 写法
+            res += 1
         return res
+
+    # count = 0
+    # for i in text_list:
+    #     for j in i:
+    #         if j in brokenLetters:
+    #             count += 1        # 通过计算不合格数量，做减法
+    #             break
+
+    # return len(text_list) - count
+
 
 def canBeTypedWords2(text, brokenLetters):
     return len([t for t in text.split(' ') if not any(b in t for b in brokenLetters)])
+
+
+
