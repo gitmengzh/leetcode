@@ -50,9 +50,6 @@ def addRungs(rungs, dist):
             res += rungs[0]//dist - 1
         else:
             res = rungs[0]//dist
-
-
-
     while dst < len(rungs):
         if rungs[dst] - rungs[dst - 1] > dist:
             temp = (rungs[dst] - rungs[dst - 1])
