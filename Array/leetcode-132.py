@@ -11,16 +11,33 @@
 
 链接：https://leetcode-cn.com/problems/single-number
 """
+import collections
 
-
-def solution1(nums):        # 使用sum
+def  singleNumber1(nums):        # 使用sum
     return sum(set(nums))*2 - sum(nums)
 
 
 
-def solution2(nums):        # 异或
-    for i in range(nums):
-        pass
+def  singleNumber2(nums):        # 异或
+    for i in range(1, len(nums)):
+        nums[0] ^= nums[i]
+    return nums[0]
+    # return reduce(lambda x, y: x ^ y, nums)
+
+
+def  singleNumber3(nums):       # collectinos.Counter()
+    count = collections.Counter(nums)
+    for i in count.keys():
+        if count[i] == 1:
+            return i
+
+def singleNumber4(nums):
+    res = []
+    for i in nums:
+        if i in res:
+            res.remove(i)
+        res.append(i)
+    return res[0]
 
 
 

@@ -16,3 +16,24 @@
 
     链接：https://leetcode-cn.com/problems/contains-duplicate
 """
+import collections
+
+def containsDuplicate1(nums) :          # set
+    return len(set(nums)) != len(nums)
+
+def containsDuplicate2(nums):       # collections
+    count = collections.Counter(nums)
+    for i in count.values():
+        if i > 1:
+            return True
+    else:
+        return False
+
+
+def containsDuplicate3(nums) :          # hashmap
+    dic = {}
+    for i in range(len(nums)):
+        if dic.get(nums[i]):
+            return True
+        dic[nums[i]] = 1
+    return False

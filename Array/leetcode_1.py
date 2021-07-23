@@ -36,14 +36,23 @@ def twoSum1(nums, target):   # 使用python list index方法
         if (target - nums[i]) in nums[i+1:]:
             return [i, nums[i+1:].index(target-nums[i])+i+1]
 
+
 def twoSum2(nums, target):  # hashmap
-    hashtable = {}
-    for i, num in enumerate(nums):      # enumerate()将nums的index和对应的元素组成一个字典（待确定是不是字典类型）
-        if (target-num) in hashtable:
-            print(hashtable)
+    hashtable = {}                      # 定义一个字典，存放{元素：下标}组成的字典
+    for i, num in enumerate(nums):      # enumerate()将nums的index和对应的元素组成一个字典（待确定是不是字典类型），进行遍历
+        if (target-num) in hashtable:   # 如果目标值减去遍历值在字典中，那么就返回对应的hashtable值和i值
+            # print(hashtable)
             return [hashtable[target-num], i]
 
-        hashtable[num] = i
+        hashtable[num] = i              # 否则将遍历元素和下标组成字典，添加到hashtable
+
+def twoSum3(nums, target):    # 暴力解法
+    l = len(nums)
+    for i in range(l):
+        for j in range(i+1, l):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+
 
 
 
