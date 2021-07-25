@@ -27,3 +27,15 @@
 
 链接：https://leetcode-cn.com/problems/rotate-array
 """
+
+
+def rotate(nums):
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+
+    if k <= len(nums):
+        nums[:] = nums[-k:] + nums[:-k]
+    else:
+        temp = k % len(nums)
+        nums[:] = nums[-temp:] + nums[:-temp]

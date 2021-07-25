@@ -20,4 +20,58 @@
 
 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays-ii
 """
+import collections
 
+def intersect(nums1, nums2):
+    res = []
+    if len(nums1) < len(nums2):
+        for i in range(len(nums1)):
+            if nums1[i] in nums2:
+                res.append(nums1[i])
+                nums2.remove(nums1[i])
+    else:
+        for j in range(len(nums2)):
+            if nums2[j] in nums1:
+                res.append(nums2[j])
+                nums1.remove(nums2[j])
+    return res
+
+def intersect2(nums1, nums2):       #  hashmap  collection.Counter
+    count1 = collections.Counter(nums1)
+    count2 = collections.Counter(nums2)
+    res = []
+    if len(count1.keys()) < len(count2.keys()):
+        for i in count1.keys():
+            if i in count2.keys():
+                for j in range(min(count1[i], count2[i])):
+                    res.append(i)
+    else:
+        for i in count2.keys():
+            if i in count1.keys():
+                for j in range(min(count1[i], count2[i])):
+                    res.append(i)
+    return res
+
+def intersect3(nums1, nums2):   # 排序+双指针
+    l1 = len(nums1)
+    l2 = len(nums2)
+    nums1.sort()
+    nums2.sort()
+    i = j = 0
+    res = []
+    while i<l1 and j< l2:
+        if nums1[i] < nums2[j]:
+            i+=1
+        elif nums1[i] > nums2[j]:
+            j+=1
+        else:
+            res.append(nums1[i])
+            i+=1
+            j+=1
+    return res
+if __name__ == "__main__":
+    nums1 = [1, 2, 2, 1]
+    nums2 = [2, 2]
+    nums3 = [4, 9, 5]
+    nums4 = [9, 4, 9, 8, 4]
+    print(intersect3(nums1, nums2))

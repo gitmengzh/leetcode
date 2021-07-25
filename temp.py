@@ -1,31 +1,25 @@
-# 。this file only to test
-def aaa(group, target):
-    # if not group:
-    #     return False
-    # lenth1 = len(group)
-    # lenth2 = len(group[0])
-    # slow = 0
-    # quick = lenth1
-    # start = 0
-    # end = lenth2
-    # while slow < quick:
-    #     while start < end:
-    #         if target < group[(start+end)//2][(start+end)//2]:
-    #             end = lenth2//2
-    #         elif target > group[(start+end)//2][(start+end)//2]:
-    #             start = lenth2//2
-    #         else:
-    #             return False
-    #     if start == end:
-    #         if target < group[lenth1//2][lenth2//2]:
-    for i in range(len(new_list)):
-        if target in new_list[i]:
-            return True
-    return False
+def diffDicts2(dict1, dict2):
+    if isinstance(dict1, dict) and isinstance(dict2, dict):
+        if not dict1 and not dict2:
+            return None, None, None
+        elif not dict1:
+            return None, dict2, dict2
+        elif not dict2:
+            return dict1, None, dict1
+        else:
+            only_dict1_has = {}
+            only_dict2_has = {}
+            all_dict = {}
+            for i in dict1.keys():
+                if i not in dict2.keys():
+                    only_dict1_has[i] = dict1[i]
+                else:
+                    pass
 
 
 
-
+    else:
+        return "类型不正确"
 
 
 
@@ -34,22 +28,8 @@ def aaa(group, target):
 
 
 if __name__ == "__main__":
-    new_list = [
-[1, 4, 7, 11, 15],
-[2, 5, 8, 12, 19],
-[3, 6, 9, 16, 22],
-[10, 13, 14, 17, 24],
-[18, 21, 23, 26, 30]
-        ]
-
-
-    target = 5
-    print(aaa(new_list, target))
-
-
-
-
-
-
-
-
+    # dict1 = {1: 'A', 3: 'C'}
+    dict1 = []
+    dict2 = {1: 'A', 2: 'B'}
+    res = diffDicts2(dict1, dict2)
+    print(res)
