@@ -59,15 +59,15 @@ def intersect3(nums1, nums2):   # 排序+双指针
     nums2.sort()
     i = j = 0
     res = []
-    while i<l1 and j< l2:
+    while i <l1 and j < l2:
         if nums1[i] < nums2[j]:
-            i+=1
+            i += 1
         elif nums1[i] > nums2[j]:
-            j+=1
+            j += 1
         else:
             res.append(nums1[i])
-            i+=1
-            j+=1
+            i += 1
+            j += 1
     return res
 if __name__ == "__main__":
     nums1 = [1, 2, 2, 1]

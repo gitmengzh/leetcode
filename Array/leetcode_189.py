@@ -29,7 +29,7 @@
 """
 
 
-def rotate(nums):
+def rotate(nums, k):
     """
     Do not return anything, modify nums in-place instead.
     """
@@ -39,3 +39,5 @@ def rotate(nums):
     else:
         temp = k % len(nums)
         nums[:] = nums[-temp:] + nums[:-temp]
+
+def rotate2(nums, k):
