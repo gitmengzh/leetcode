@@ -41,3 +41,6 @@ def rotate(nums, k):
         nums[:] = nums[-temp:] + nums[:-temp]
 
 def rotate2(nums, k):
+    k %= len(nums)
+    for i in range(k):
+        nums.insert(0,nums.pop())
