@@ -70,10 +70,11 @@ def isValidSudoku(board):
             num = board[i][j]
             if num != '.':
                 num = int(num)
-                box_index = (i // 3) * 3 + j // 3
+                box_index = (i // 3) * 3 + j // 3  #  将九宫格分为9个区域
 
                 # keep the current cell value
-                rows[i][num] = rows[i].get(num, 0) + 1
+                rows[i][num] = rows[i].get(num, 0) + 1          # dict.get(key, default=None) key -- 字典中要查找的键。
+                                                                #  default -- 如果指定键的值不存在时，返回该默认值。
                 columns[j][num] = columns[j].get(num, 0) + 1
                 boxes[box_index][num] = boxes[box_index].get(num, 0) + 1
 
