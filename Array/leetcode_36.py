@@ -84,6 +84,40 @@ def isValidSudoku(board):
 
 
 
+def isValidSudoku2(board):
+
+    temp_cell = [[] for i in range(9)]
+    for i in range(9):
+        temp_row = []
+        temp_col = []
+        for j in range(9):
+            num_row = board[i][j]
+            num_col = board[j][i]
+            cell_row = (i//3)*3 + j // 3
+            # cell_col = (j//3)*3 + i // 3
+            if num_row != '.' and num_row not in temp_row:
+                temp_row.append(num_row)
+            else:
+                if num_row != '.':
+                    return False
+            if num_col != '.' and num_col not in temp_col:
+                temp_col.append(num_col)
+            else:
+                if num_col != '.':
+                    return False
+            if num_row != '.' and num_row not in temp_cell[cell_row]:
+                temp_cell[cell_row].append(num_row)
+            else:
+                if num_row != '.':
+                    return False
+
+    return True
+
+
+
+
+
+
 
 if __name__ == "__main__":
     board =[["8", "3", ".", ".", "7", ".", ".", ".", "."]
@@ -96,4 +130,16 @@ if __name__ == "__main__":
         , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
         , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
 
-    print(isValidSudoku(board))
+    board1 = [["5","3",".",".","7",".",".",".","."]
+            ,["6",".",".","1","9","5",".",".","."]
+            ,[".","9","8",".",".",".",".","6","."]
+            ,["8",".",".",".","6",".",".",".","3"]
+            ,["4",".",".","8",".","3",".",".","1"]
+            ,["7",".",".",".","2",".",".",".","6"]
+            ,[".","6",".",".",".",".","2","8","."]
+            ,[".",".",".","4","1","9",".",".","5"]
+            ,[".",".",".",".","8",".",".","7","9"]]
+
+
+
+    print(isValidSudoku2(board1))
