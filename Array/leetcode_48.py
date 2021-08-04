@@ -36,3 +36,29 @@
 
 链接：https://leetcode-cn.com/problems/rotate-image
 """
+#   [i,j]-->[j,n-i-1]
+def rotate(matrix):
+    """
+    Do not return anything, modify matrix in-place instead.
+
+    (0,0),(0,1),(0,2)   -->     (2,0),(2,1),(2,2)   -->     (2,0),(1,0),(0,0)
+    (1,0),(1,1),(1,2)   -->     (1,0),(1,1),(1,2)   -->     (2,1),(1,1),(0,1)
+    (2,0),(2,1),(2,2)   -->     (0,0),(0,1),(0,2)   -->     (2,2),(1,2),(0,2)
+    """
+
+    n = len(matrix)
+    for i in range(n//2):           # 上下翻转
+        for j in range(n):
+            matrix[i][j], matrix[n-i-1][j] = matrix[n-i-1][j], matrix[i][j]
+    for i in range(n):              # 对角翻转
+        for j in range(i):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+
+    return matrix
+
+
+
+if __name__ == "__main__":
+    matrix = [[1,2,3],[4,5,6],[7,8,9]]
+    print(rotate(matrix))
