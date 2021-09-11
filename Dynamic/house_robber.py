@@ -22,19 +22,33 @@
 """
 
 
-def rob(nums):
-    i = len(nums)
-    res = []
-    if len(nums) == 1:
-        res[0] = nums[0]
-    elif len(nums) == 2:
-        res[1] = max(nums[0], nums[1])
-    while i >2:
-        res[i] = max(res[i-1], res[i-2]+nums[i])
+def rob1(nums):
+    lenth = len(nums)
+    if lenth == 1:
+        return nums[0]
+    else:
+        res = [0] * lenth
+        res[1] = max(nums[0], nums[2])
+        for i in range(2, len(nums)):
+            res[i] = max(res[i-2]+nums[i], res[i-1])
+
+
     return res[-1]
+
+def rob2(nums):
+    lenth = len(nums)
+    if lenth == 1:
+        return nums[0]
+    else:
+        temp, res = nums[0], max(nums[0], nums[1])
+        for i in range(2, len(nums)):
+            temp, res = res, max(nums[i]+temp, res)
+
+
+    return res
 
 
 if __name__ == "__main__":
     nums = [2,7,9,3,1]
-    print(rob(nums))
+    print(rob1(nums))
 
