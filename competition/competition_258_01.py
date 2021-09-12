@@ -26,7 +26,7 @@
     1 <= word.length <= 250
     word 由小写英文字母组成
     ch 是一个小写英文字母
-
+https://leetcode-cn.com/problems/reverse-prefix-of-word/
 
 """
 def reversePrefix(word, ch):

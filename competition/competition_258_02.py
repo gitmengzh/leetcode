@@ -24,6 +24,7 @@
     1 <= n <= 105
     rectangles[i].length == 2
     1 <= widthi, heighti <= 105
+    https://leetcode-cn.com/problems/number-of-pairs-of-interchangeable-rectangles/
 """
 def interchangeableRectangles(rectangles):
     res = {}
