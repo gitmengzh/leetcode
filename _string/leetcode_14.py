@@ -17,21 +17,29 @@
 def longestCommonPrefix(strs):
     if not strs:
         return ''
-    commonstr = ''
-    for i in range(len(strs[0])+1):
-        commonstr = strs[0][:i]
+    # commonstr = ''
+    # for i in range(len(strs[0])+1):
+    #     # commonstr = strs[0][:i]
+    #     for j in range(1, len(strs)):
+    #         if len(strs[j]) < i:
+    #             return strs[0][:i]
+    #         else:
+    #             if strs[j][:i] == commonstr:
+    #                 continue
+    #             else:
+    #                 return strs[0][:i-1]
+    # return commonstr
+    count = 0
+    for i in strs[0]:
         for j in range(1, len(strs)):
-            if len(strs[j]) < i:
-                return commonstr
+            if len(strs[count]) < count:
+                return strs[0][:count]
             else:
-                if strs[j][:i] == commonstr:
+                if strs[j][count]  == i:
                     continue
                 else:
-                    return strs[0][:i-1]
-
-
-    return commonstr
-
+                    return strs[0][]
+            count += 1
 
 if __name__ == "__main__":
     strs1 = ["flower", "flo", "floweraaa"]
@@ -39,4 +47,3 @@ if __name__ == "__main__":
     strs3 = ["a", "b"]
     strs4 = ["ab", "a"]
     print(longestCommonPrefix(strs2))
-

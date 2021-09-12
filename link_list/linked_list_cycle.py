@@ -1,9 +1,9 @@
 '''
 环形链表
 给定一个链表，判断链表中是否有环。
-如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
-为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。
-如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
+如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，
+我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
 如果链表中存在环，则返回 true 。 否则，返回 false 。
 进阶：
 你能用 O(1)（即，常量）内存解决此问题吗？
@@ -19,29 +19,17 @@
 输入：head = [1], pos = -1
 输出：false
 解释：链表中没有环。
-提示：
-    链表中节点的数目范围是 [0, 104]
-    -105 <= Node.val <= 105
-    pos 为 -1 或者链表中的一个 有效索引 。
 链接：https://leetcode-cn.com/problems/linked-list-cycle
 '''
 
-class Solution:
-    # 快慢指针
-    def solve1(self, head):
-        while not head or head.next:  # 空链表或者只有一个节点的链表直接返回False
-            return False
-        slow = head
-        fast  = head.next
-        while fast and fast.next:
-            if slow == fast:
-                return True
-            slow = slow.next
-            fast = fast.next.next
+def hasCycle(head):
+    if not head or not head.next:       # 如果head 和 head.next 有一个不存在，那么直接返回False
         return False
-
-    def solve2(self, head):
-        count = 0
-        while head and count <= 10000:  # 题目说链表长度最高为10000
-            count, head = count+1, head.next
-        return count >10000  # 如何链表为循环链表，那么上边会一直循环，直到大于10000
+    slow = head
+    fast = head.next
+    while fast and fast.next:       # 如果fast 和 fast.next 同时有值，那么循环继续
+        if slow == fast:            #  如果有环，那么迟早 slow 和 fast 会相等
+            return True
+        slow = slow.next            # slow每次进一位
+        fast = fast.next.next       # fast 每次进两位
+    return False
