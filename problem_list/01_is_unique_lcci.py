@@ -26,3 +26,8 @@ def isUnique1(astr):
         if new_count[i] != 1:
             return False
     return True
+
+
+def isUnique2(astr): # 位运算
+    pass
+    # https://leetcode-cn.com/problems/is-unique-lcci/solution/wei-yun-suan-fang-fa-si-lu-jie-shao-by-zhen-zhu-ha/
