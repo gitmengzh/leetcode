@@ -49,16 +49,25 @@ def CheckPermutation3(s1, s2):
 
 
 def CheckPermutation4(s1, s2):
-    s11 = 0
-    s22 = 0
-    for i in s1:
-        s11 ^= ord(i)
-    for j in s2:
-        s22 ^= ord(j)
-    # 排除叠词，例如：s1='aa'   s2='bb'
-    if s11 == s22 == 0 and s1[0] != s2[0]:
+    l = len(s1)
+    if l != len(s1):
         return False
-    return s11 ^ s22 == 0
+    res1 = 0
+    res2 = 0
+    for i in range(l):              # 双重判断， 异或运算+加减运算保证相同， 如果仅仅加减运算，会存在'aac'&&'bbb'情况，即ascii码总数相同
+                                    # 如果仅仅异或22运算，会存在'aabb'&&'aacc'的情况
+        res1 ^= (1 << (ord(s1[i])-ord('a')))
+        res1 ^= (1 << (ord(s2[i])-ord('a')))
+        res2 += (1 << (ord(s1[i])-ord('a')))
+        res2 -= (1 << (ord(s2[i])-ord('a')))
+    return res1 == 0 and res2 == 0
+
+
+if __name__ == "__main__":
+    s1 = "ab"
+    s2 = "a"
+    print(CheckPermutation4(s1,s2))
+
 
 
 

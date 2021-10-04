@@ -28,6 +28,23 @@ def isUnique1(astr):
     return True
 
 
-def isUnique2(astr): # 位运算
-    pass
+def isUnique2(astr):        # 位运算
+    mark = 0                        # 定义一个判断标准，用于存放已有字符的ascii码
+    for i in astr:                  # 遍历 astr
+        move = ord(i)-ord('a')      # 字符i要移动几位
+        if (mark & (1 << move)) != 0:  # 判断，如果字符已经出现过，那么在mark的相同位置为1，相与后结果为1
+            return False             # 则证明字符出现过
+        else:
+            mark |= (1 << move)      # 如果没出现过，那么直接将将对应mark中的位置置为1
+    return True
     # https://leetcode-cn.com/problems/is-unique-lcci/solution/wei-yun-suan-fang-fa-si-lu-jie-shao-by-zhen-zhu-ha/
+
+
+
+
+
+
+
+if  __name__ == "__main__":
+    s = 'abc'
+    print(isUnique2(s))
