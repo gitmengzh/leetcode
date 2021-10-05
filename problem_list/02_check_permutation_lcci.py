@@ -55,7 +55,7 @@ def CheckPermutation4(s1, s2):
     res1 = 0
     res2 = 0
     for i in range(l):              # 双重判断， 异或运算+加减运算保证相同， 如果仅仅加减运算，会存在'aac'&&'bbb'情况，即ascii码总数相同
-                                    # 如果仅仅异或22运算，会存在'aabb'&&'aacc'的情况
+                                    # 如果仅仅异或运算，会存在'aabb'&&'aacc'的情况(重复字符)
         res1 ^= (1 << (ord(s1[i])-ord('a')))
         res1 ^= (1 << (ord(s2[i])-ord('a')))
         res2 += (1 << (ord(s1[i])-ord('a')))
