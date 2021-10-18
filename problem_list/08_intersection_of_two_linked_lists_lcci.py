@@ -3,7 +3,7 @@
 请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
 https://leetcode-cn.com/problems/intersection-of-two-linked-lists-lcci/
 """
-def getIntersectionNode(headA, headB):
+def getIntersectionNode1(headA, headB):
     a = headA
     b = headB
     while a != b:
@@ -13,7 +13,7 @@ def getIntersectionNode(headA, headB):
 
 
 
-def getIntersectionNode(headA, headB):
+def getIntersectionNode2(headA, headB):
     set1 = set()
     a = headA
     b = headB
