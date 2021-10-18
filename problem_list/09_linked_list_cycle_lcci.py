@@ -8,3 +8,38 @@
 
 """
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+def detectCycle1(head):
+        set1 = set()   # 用set存储已有链表值，遍历链表，如果存在set中，则证明有环
+        cur = head
+        while cur:
+            if cur not in set1:
+                set1.add(cur)
+            else:
+                return cur
+            cur = cur.next
+
+
+def detectCyle2(head):          # 双指针
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            break
+    if not fast or not fast.next:
+        return None
+
+    slow = head
+    while slow != fast:             #  https://leetcode-cn.com/problems/linked-list-cycle-lcci/solution/python3-liang-chong-fang-fa-shi-xian-huan-lu-jian-/
+        slow = slow.next            # 结论： 起点到环开头的距离等于环内相遇点到环开头点的距离
+        fast = fast.next
+    return slow
+
+
