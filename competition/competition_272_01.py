@@ -25,11 +25,20 @@ def firstPalindrome(words):
             return i
     else:
         return ""
-
+def isPalindrome(word):  # 判断字符串是否是回文字符串，然后调用函数，判断
+    r = len(word)-1
+    l = 0
+    while l < r:
+        if word[r] != word[l]:
+            return False
+        r -= 1
+        l += 1
+    return True
 
 if __name__ == "__main__":
     rings = ['aba', 'csd']
-    print(firstPalindrome(rings))
+    # print(firstPalindrome(rings))
+    print(isPalindrome('aba'))
 
 
 

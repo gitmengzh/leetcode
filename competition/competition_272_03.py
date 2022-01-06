@@ -40,6 +40,35 @@ def getDescentPeriods(prices):
             cout += (len(j)*(len(j)-1))/2
     return int(cout)
 
+# 动态规划 https://leetcode-cn.com/problems/number-of-smooth-descent-periods-of-a-stock/solution/gu-piao-ping-hua-xia-die-jie-duan-de-shu-w3hi/
+def getDescentPeriods1(prices):
+    n = len(prices)
+    res = 1  # 平滑下降阶段的总数，初值为 dp[0]
+    prev = 1  # 上一个元素为结尾的平滑下降阶段的总数，初值为 dp[0]
+    # 从 1 开始遍历数组，按照递推式更新 prev 以及总数 res
+    for i in range(1, n):
+        if prices[i] == prices[i - 1] - 1:
+            prev += 1
+        else:
+            prev = 1
+        res += prev
+    return res
+
+# 滑动窗口
+def getDescentPeriods2(prices):
+    n = len(prices)
+    res = n
+    l = 0
+    r = 1
+    while r < n:
+        if prices[r - 1] - 1 == prices[r]:
+            res += (r - l)
+        else:
+            l = r
+        r += 1
+    return res
+
+
 
 if __name__ == "__main__":
     prices = [12,11,10,9,8,7,6,5,4,3,4,3,10,9,8,7]

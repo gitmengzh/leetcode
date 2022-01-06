@@ -24,11 +24,11 @@ def addSpaces(s, spaces):
     res = []
     for i in range(len(spaces)):
         if i == 0:
-            if i == len(spaces) - 1:
-                if spaces[i] == 0:
+            if i == len(spaces) - 1:  # 如果spaces只有一个数值
+                if spaces[i] == 0:  # 且这个数值等于0
                     return " " + s
                 else:
-                    return s[:spaces[i]] + " " + s[spaces[i]:]
+                    return s[:spaces[i]] + " " + s[spaces[i]:]  # 不等于0
             elif spaces[i] == 0:
                 res.append("")
             else:
@@ -39,6 +39,19 @@ def addSpaces(s, spaces):
         else:
             res.append(s[spaces[i-1]:spaces[i]])
     return " ".join(res)
+
+# 双指针
+def addSpaces1(s, spaces):
+    ans = list()
+    ptr = 0
+    for i, ch in enumerate(s):
+        if ptr < len(spaces) and spaces[ptr] == i:
+            ans.append(" ")
+            ptr += 1
+        ans.append(ch)
+
+    return "".join(ans)
+
 
 
 if __name__ == "__main__":
