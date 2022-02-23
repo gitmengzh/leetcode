@@ -46,6 +46,7 @@ def mergeNodes(head):
 
 
 if __name__ == "__main__":
+    head = []
     print(mergeNodes(head))
 
 
@@ -55,10 +56,3 @@ if __name__ == "__main__":
 
 
 
-if __name__ == "__main__":
-    # nums = [1,2,2,2,2]
-    # print(minimumOperations(nums))
-    from collections import Counter
-    words = ['red', 'blue','yellow','red', 'blue','red']
-    Most_word = Counter(words).most_common()
-    print(Most_word)
